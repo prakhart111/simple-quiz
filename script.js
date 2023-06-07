@@ -8,7 +8,7 @@ let currentOrder = [];
 // Add event listeners to options for dragging and dropping
 options.forEach(option => {
   // set option value randomly
-  const randomValue = Math.floor(Math.random() * 500);
+  const randomValue = Math.floor(Math.random() * 900);
   option.textContent = randomValue;
   option.addEventListener('dragstart', dragStart);
   option.addEventListener('dragend', dragEnd);
@@ -128,5 +128,5 @@ function showResult(isCorrect, message) {
   resultDiv.textContent = message;
   resultDiv.style.color = isCorrect ? 'green' : 'red';
   resultDiv.style.fontWeight = 'bold';
-  resultDiv.style.textShadow=isCorrect ? "0 0 10px rgba(255, 0, 0, 0.4)" : "0 0 10px rgba(0, 255, 0, 0.4);";
+  resultDiv.style.textShadow= !isCorrect ? "0 0 10px rgba(255, 0, 0, 0.4)" : "0 0 10px rgba(0, 255, 0, 0.4)";
 }

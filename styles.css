@@ -85,10 +85,8 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
     font-weight: 700;
-    /* text-shadow: 0 0 10px rgba(255, 0, 0, 0.4); */
     font-size: 3rem;
   }
-  
   #check-button,
   #reset-button {
     color: white;
@@ -99,22 +97,16 @@ body {
     margin: 5px;
     transition : all 0.2s ease-in-out;
   }
-
   #check-button{
     background: linear-gradient(90deg, #3D9F00 0%, #00D355 100%);
   }
   #reset-button{
     background: linear-gradient(90deg, #9F7300 0%, #D33F00 100%);
   }
-
-  
   #check-button:disabled {
     background: lightgray;
     cursor: not-allowed;
   }
- 
-  /* add animations and transitions while dragging */
-
   .dragging {
     opacity: 0.5;
     transition: transform 0.2s ease-in-out;
