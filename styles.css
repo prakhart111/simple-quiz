@@ -2,38 +2,76 @@ body {
     font-family: Arial, sans-serif;
   }
   
-  h1 {
+  h1,h3 {
     text-align: center;
+  }
+  h3{
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  button{
+    font-weight: 700;
+    padding: 15px;
   }
   
   #quiz-container {
     margin: 0 auto;
     max-width: 500px;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
   
   #options-container {
+    background: rgba(195,233,255,1.00);
+    border:3px solid rgba(0,0,0,1);
+    border-radius:30px;
+    min-height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 50px 0 rgba(0, 0, 0, 0.2);
+    min-width: 450px;
     margin-bottom: 20px;
   }
   
   .option {
-    display: inline-block;
     padding: 10px;
     margin: 5px;
-    background-color: lightgray;
+    background-color: #fff;
     cursor: pointer;
+    border: 2px solid black;
+    border-radius: 15px;
+    min-width: 50px;
+    min-height: 24px;
+    font-size: 18px;
+    transition: all 0.2s ease-in-out;
   }
   
   #inputs-container {
     display: flex;
     justify-content: space-around;
     margin-bottom: 20px;
+    position: absolute;
+    gap: 1px;
+    top: 50%;
   }
   
   .input-bucket {
-    width: 50px;
-    height: 50px;
+    padding: 10px;
+    margin: 5px;
+    background-color: #fff;
     border: 2px solid black;
+    border-radius: 15px;
+    min-width: 60px;
+    min-height: 40px;
+    font-size: 18px;
+    transition: all 0.2s ease-in-out;
+
     display: flex;
     align-items: center;
     justify-content: center;
@@ -42,23 +80,52 @@ body {
   
   #result {
     margin-bottom: 20px;
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: 700;
+    /* text-shadow: 0 0 10px rgba(255, 0, 0, 0.4); */
+    font-size: 3rem;
   }
   
   #check-button,
   #reset-button {
-    padding: 10px;
-    background-color: dodgerblue;
     color: white;
     cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    margin: 5px;
+    transition : all 0.2s ease-in-out;
   }
+
+  #check-button{
+    background: linear-gradient(90deg, #3D9F00 0%, #00D355 100%);
+  }
+  #reset-button{
+    background: linear-gradient(90deg, #9F7300 0%, #D33F00 100%);
+  }
+
   
   #check-button:disabled {
-    background-color: lightgray;
+    background: lightgray;
     cursor: not-allowed;
   }
-  .dragging{
+ 
+  /* add animations and transitions while dragging */
+
+  .dragging {
     opacity: 0.5;
+    transition: transform 0.2s ease-in-out;
+    animation : pulse 0.5s infinite alternate;
   }
-  .hightlight{
-    background-color: yellow;
+
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+    }
+    100% {
+      transform: scale(1.1);
+    }
   }

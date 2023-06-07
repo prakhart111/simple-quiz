@@ -8,7 +8,7 @@ let currentOrder = [];
 // Add event listeners to options for dragging and dropping
 options.forEach(option => {
   // set option value randomly
-  const randomValue = Math.floor(Math.random() * 100);
+  const randomValue = Math.floor(Math.random() * 500);
   option.textContent = randomValue;
   option.addEventListener('dragstart', dragStart);
   option.addEventListener('dragend', dragEnd);
@@ -53,25 +53,43 @@ function dragLeave() {
 }
 
 function drop() {
+  console.log(this)
   const optionValue = document.querySelector('.dragging').textContent;
   const inputValue = this.getAttribute('data-value');
   const inputIndex = this.getAttribute('data-index');
 
+  console.log("Option" , optionValue)
+  console.log("Input Value",inputValue)
+  console.log("Input Index" ,inputIndex)
+
   if (optionValue && inputValue === '') {
     this.textContent = optionValue;
+    this.style.backgroundColor = '#9e9';
     this.setAttribute('data-value', optionValue);
-    currentOrder[inputIndex] = optionValue;
+    currentOrder[inputIndex] = Number(optionValue);
     document.querySelector('.dragging').style.display = 'none';
     checkButton.disabled = !isGameComplete();
   }
+  console.log(currentOrder)
 }
-
+// isArrayEqual function
+function isArrayEqual(arr1, arr2) {
+  if (arr1.length !== arr2.length) {
+    return false;
+  }
+  for (let i = 0; i < arr2.length; i++) {
+    if (arr1[i] !== arr2[i]) {
+      return false;
+    }
+  }
+  return true;
+}
 
 // Check button function
 function checkAnswers() {
-  const sortedOrder = currentOrder.slice().sort();
-
-  if (JSON.stringify(currentOrder) === JSON.stringify(sortedOrder)) {
+  const sortedOrder = [...currentOrder].sort((a, b) => a - b);
+  console.log(currentOrder, sortedOrder)
+  if (isArrayEqual(currentOrder, sortedOrder)) {
     showResult(true, 'Correct!');
   } else {
     showResult(false, 'Incorrect!');
@@ -86,8 +104,9 @@ function resetGame() {
     option.classList.remove('dragging');
   });
   inputBuckets.forEach(bucket => {
-    bucket.textContent = '';
+    bucket.innerHTML = '<img src="./down.gif" alt="down" width="20" height="20">';
     bucket.setAttribute('data-value', '');
+    bucket.style.backgroundColor = '#fff';
   });
   checkButton.disabled = true;
   document.getElementById('result').textContent = '';
@@ -108,4 +127,6 @@ function showResult(isCorrect, message) {
   const resultDiv = document.getElementById('result');
   resultDiv.textContent = message;
   resultDiv.style.color = isCorrect ? 'green' : 'red';
+  resultDiv.style.fontWeight = 'bold';
+  resultDiv.style.textShadow=isCorrect ? "0 0 10px rgba(255, 0, 0, 0.4)" : "0 0 10px rgba(0, 255, 0, 0.4);";
 }

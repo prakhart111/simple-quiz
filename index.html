@@ -8,7 +8,6 @@
   <h1>Quiz Game</h1>
   <div id="quiz-container">
     <div id="options-container">
-      <h3>Options:</h3>
       <!-- These are initial values, we'll randomly allocate new values later. -->
       <div class="option" draggable="true">1</div>
       <div class="option" draggable="true">2</div>
@@ -16,19 +15,29 @@
       <div class="option" draggable="true">4</div>
       <div class="option" draggable="true">5</div>
     </div>
+    <button id="check-button" disabled>CHECK ANSWER</button>
+    <button id="reset-button">RESET STACK</button>
+    <h3>Drop Here</h3>
     <div id="inputs-container">
-      <h3>Sort the Numbers:</h3>
-      <div class="input-bucket" data-index="0" data-value=""></div>
-      <div class="input-bucket" data-index="1" data-value=""></div>
-      <div class="input-bucket" data-index="2" data-value=""></div>
-      <div class="input-bucket" data-index="3" data-value=""></div>
-      <div class="input-bucket" data-index="4" data-value=""></div>
+      <div class="input-bucket" data-index="0" data-value="">
+        <img src="./down.gif" alt="down" width="20" height="20">
+      </div>
+      <div class="input-bucket" data-index="1" data-value="">
+        <img src="./down.gif" alt="down" width="20" height="20">
+      </div>
+      <div class="input-bucket" data-index="2" data-value="">
+        <img src="./down.gif" alt="down" width="20" height="20">
+      </div>
+      <div class="input-bucket" data-index="3" data-value="">
+        <img src="./down.gif" alt="down" width="20" height="20">
+      </div>
+      <div class="input-bucket" data-index="4" data-value="">
+        <img src="./down.gif" alt="down" width="20" height="20">
+      </div>
     </div>
-    <div id="result"></div>
-    <button id="check-button" disabled>Check</button>
-    <button id="reset-button">Reset</button>
-  </div>
 
+  </div>
+  <div id="result"></div>
   <script src="script.js"></script>
 </body>
 </html>
